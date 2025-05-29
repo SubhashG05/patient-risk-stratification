@@ -2,7 +2,7 @@
 
 A machine learning-based clinical decision support tool that predicts patient readmission risk and ICU transfer risk using electronic health record data. This application helps healthcare providers identify high-risk patients, prioritize care, and optimize resource allocation.
 
-![Application Screenshot](app_screenshot.png)
+![Application Screenshot](Patient risk_streamlit app.png)
 
 ## Features
 
@@ -15,7 +15,7 @@ A machine learning-based clinical decision support tool that predicts patient re
 
 ## Application Demo
 
-The application is deployed at: [Streamlit Cloud](https://patient-risk-stratification.streamlit.app)
+The application is deployed at: [Streamlit Cloud](https://patient-risk-stratification-model.streamlit.app/)
 
 ## Installation
 
