@@ -108,6 +108,6 @@ This application is for demonstration purposes only and should not be used for a
 
 ## Contact
 
-- GitHub: [your-username](https://github.com/your-username)
-- LinkedIn: [Your Name](https://www.linkedin.com/in/your-name/)
-- Email: your.email@example.com
+- GitHub: https://github.com/SubhashG05
+- LinkedIn: https://www.linkedin.com/in/g-subhash/
+- Email: subhashg5397@gmail.com
