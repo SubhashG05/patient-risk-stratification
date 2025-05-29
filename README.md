@@ -15,7 +15,7 @@ A machine learning-based clinical decision support tool that predicts patient re
 
 ## Application Demo
 
-The application is deployed at: [Streamlit Cloud](https://patient-risk-stratification-model.streamlit.app/)
+The application is deployed at: [Streamlit Cloud_patient-risk-stratification-model](https://patient-risk-stratification-model.streamlit.app/)
 
 ## Installation
 
