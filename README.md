@@ -2,7 +2,7 @@
 
 A machine learning-based clinical decision support tool that predicts patient readmission risk and ICU transfer risk using electronic health record data. This application helps healthcare providers identify high-risk patients, prioritize care, and optimize resource allocation.
 
-![Application Screenshot](Patient risk_streamlit app.png)
+![Application Screenshot](streamlitapp.png)
 
 ## Features
 
