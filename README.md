@@ -94,18 +94,6 @@ This project was developed as a portfolio project for a data science role in hea
 - Develop a clinical validation framework for model verification
 - Add collaborative filtering for treatment recommendations
 
-## Contributing
-
-Contributions to this project are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Disclaimer
-
-This application is for demonstration purposes only and should not be used for actual clinical decision making. Always consult with qualified healthcare professionals for medical decisions.
-
 ## Contact
 
 - GitHub: https://github.com/SubhashG05
