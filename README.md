@@ -17,85 +17,77 @@ A machine learning-based clinical decision support tool that predicts patient re
 
 The application is deployed at: [Streamlit Cloud_patient-risk-stratification-model](https://patient-risk-stratification-model.streamlit.app/)
 
-## Installation
+## Installation (Local)
 
 1. Clone the repository:
-```bash
-git clone https://github.com/your-username/patient-risk-stratification.git
-cd patient-risk-stratification
-```
+    ```bash
+    git clone https://github.com/your-username/patient-risk-stratification.git
+    cd patient-risk-stratification
+    ```
 
 2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
 3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-## Usage
+## Usage (Local)
 
 1. Run the Streamlit application:
-```bash
-streamlit run app.py
-```
+    ```bash
+    streamlit run app.py
+    ```
 
-2. Access the application in your web browser at `http://localhost:8501`
+2. Access the application in your web browser at `http://localhost:8501`.
 
-3. Choose one of the following options:
-   - Upload a CSV file with patient data
-   - Enter patient information manually
-   - Generate sample patients for demonstration
+## Deployment on AWS EC2 with Docker
 
-4. View risk assessment results and model explanations
+This section describes how to deploy the app on an AWS EC2 instance using Docker for a production-ready setup.
 
-## Project Structure
+### Steps:
 
-```
-patient_risk_stratification/
-├── data/                      # Raw and processed data
-├── models/                    # Saved model files
-├── src/                       # Source code
-│   ├── __init__.py
-│   ├── data_preprocessing.py  # Data cleaning and feature engineering
-│   ├── model_training.py      # Model development and evaluation
-│   └── utils.py               # Helper functions
-├── app.py                     # Streamlit application
-├── requirements.txt           # Dependencies
-└── README.md                  # Project documentation
-```
+1. **Provision EC2 Instance**  
+   - Launch an EC2 instance (Ubuntu 20.04 recommended).
+   - Select appropriate instance type (e.g., t2.micro for testing, t3.medium for production).
+   - Configure security group to allow inbound traffic on port 8501 (Streamlit).
 
-## Model Details
+2. **Upload Project Files**  
+   - From your local machine, use `scp` to upload your zipped project folder:
+     ```bash
+     scp -i "path/to/your-key.pem" patient_model.zip ubuntu@<EC2-Public-IP>:/home/ubuntu/
+     ```
+   - On the EC2 instance, unzip the project folder:
+     ```bash
+     unzip patient_model.zip
+     cd "Patient risk stratification model"
+     ```
 
-- **Algorithms**: XGBoost, Random Forest, Logistic Regression
-- **Features**: Demographic information, vital signs, diagnoses, procedures, medications, lab results
-- **Target Variables**: Hospital readmission risk, ICU transfer risk
-- **Performance**: Evaluated using accuracy, precision, recall, F1-score, and ROC AUC
+3. **Build Docker Image**  
+   - Ensure Docker is installed on the EC2 instance.
+   - Build the Docker image:
+     ```bash
+     sudo docker build -t patient-risk-app .
+     ```
 
-## Development
+4. **Run Docker Container**  
+   - Run the container:
+     ```bash
+     sudo docker run -d -p 8501:8501 patient-risk-app
+     ```
+   - Access the app at:  
+     `http://<EC2-Public-IP>:8501`
 
-This project was developed as a portfolio project for a data science role in healthcare. The key steps in the development process were:
+5. **Snapshot**  
+   - ![EC2 Docker Deployment Screenshot](ec2_docker_deployment.png)
 
-1. **Data Collection**: Utilizing open-source healthcare datasets for model training
-2. **Exploratory Data Analysis**: Understanding the characteristics and patterns in patient data
-3. **Feature Engineering**: Creating relevant features for risk prediction
-4. **Model Development**: Training and evaluating different machine learning algorithms
-5. **Application Development**: Building an interactive web application using Streamlit
-6. **Model Interpretation**: Implementing SHAP for model explainability
-
-## Future Improvements
-
-- Implement a time-series analysis component for longitudinal patient data
-- Add support for more risk prediction targets (e.g., mortality, length of stay)
-- Integrate with external EHR systems for real-time data access
-- Develop a clinical validation framework for model verification
-- Add collaborative filtering for treatment recommendations
-
-## Contact
-
-- GitHub: https://github.com/SubhashG05
-- LinkedIn: https://www.linkedin.com/in/g-subhash/
-- Email: subhashg5397@gmail.com
+### Notes:
+- Consider setting up a custom domain and HTTPS for production.
+- For larger data or high traffic, upgrade the EC2 instance type accordingly.
+- Always monitor logs for issues:
+  ```bash
+  sudo docker logs <container-id>
