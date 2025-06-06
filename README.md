@@ -119,7 +119,7 @@ Deploy the application on an EC2 instance using Docker for better control, scala
       ```
 
 5. **Snapshot**
-    - ![EC2 Docker Deployment Screenshot](Docker Deployment.png)
+    - ![EC2 Docker Deployment Screenshot](DockerDeployment.png)
 
 #### Notes:
 - Docker ensures consistent environments, easy versioning, and containerized deployment.
