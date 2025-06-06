@@ -132,17 +132,7 @@ Deploy the application on an EC2 instance using Docker for better control, scala
 
 ## Project Structure
 
-patient_risk_stratification/
-├── data/                      # Raw and processed data
-├── models/                    # Saved model files
-├── src/                       # Source code
-│   ├── __init__.py
-│   ├── data_preprocessing.py  # Data cleaning and feature engineering
-│   ├── model_training.py      # Model development and evaluation
-│   └── utils.py               # Helper functions
-├── app.py                     # Streamlit application
-├── requirements.txt           # Dependencies
-└── README.md                  # Project documentation
+![Application Screenshot](ProjectStructure.png)
 
 
 ## Model Details
