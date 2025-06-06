@@ -36,58 +36,99 @@ The application is deployed at: [Streamlit Cloud_patient-risk-stratification-mod
     pip install -r requirements.txt
     ```
 
-## Usage (Local)
-
-1. Run the Streamlit application:
+4. Run the application:
     ```bash
     streamlit run app.py
     ```
 
-2. Access the application in your web browser at `http://localhost:8501`.
+5. Access the app at: `http://localhost:8501`
 
-## Deployment on AWS EC2 with Docker
+---
 
-This section describes how to deploy the app on an AWS EC2 instance using Docker for a production-ready setup.
+## 🚀 Deployment Options
 
-### Steps:
+This application can be deployed using either **Streamlit Cloud** for quick testing or **AWS EC2 with Docker** for a production-ready deployment.
 
-1. **Provision EC2 Instance**  
-   - Launch an EC2 instance (Ubuntu 20.04 recommended).
-   - Select appropriate instance type (e.g., t2.micro for testing, t3.medium for production).
-   - Configure security group to allow inbound traffic on port 8501 (Streamlit).
+---
 
-2. **Upload Project Files**  
-   - From your local machine, use `scp` to upload your zipped project folder:
-     ```bash
-     scp -i "path/to/your-key.pem" patient_model.zip ubuntu@<EC2-Public-IP>:/home/ubuntu/
-     ```
-   - On the EC2 instance, unzip the project folder:
-     ```bash
-     unzip patient_model.zip
-     cd "Patient risk stratification model"
-     ```
+### 📌 1. Deployment on Streamlit Cloud
 
-3. **Build Docker Image**  
-   - Ensure Docker is installed on the EC2 instance.
-   - Build the Docker image:
-     ```bash
-     sudo docker build -t patient-risk-app .
-     ```
+1. **Upload Code to GitHub**
+    - Make sure your repository contains all necessary files:
+      - `app.py`
+      - `requirements.txt`
+      - Any data files (if required).
 
-4. **Run Docker Container**  
-   - Run the container:
-     ```bash
-     sudo docker run -d -p 8501:8501 patient-risk-app
-     ```
-   - Access the app at:  
-     `http://<EC2-Public-IP>:8501`
+2. **Sign in to Streamlit Cloud**
+    - Go to [https://streamlit.io/cloud](https://streamlit.io/cloud) and sign in using your GitHub account.
 
-5. **Snapshot**  
-   - ![EC2 Docker Deployment Screenshot](ec2_docker_deployment.png)
+3. **Deploy the App**
+    - Click on **"New app"**.
+    - Connect your GitHub repository.
+    - Choose the `main` branch and select `app.py` as the main file.
+    - Click **"Deploy"**.
 
-### Notes:
-- Consider setting up a custom domain and HTTPS for production.
-- For larger data or high traffic, upgrade the EC2 instance type accordingly.
-- Always monitor logs for issues:
-  ```bash
-  sudo docker logs <container-id>
+4. **Access the App**
+    - Streamlit will provide a URL like:  
+      `https://yourusername-yourrepo.streamlit.app`
+    - The app is publicly accessible over HTTPS.
+
+---
+
+### 📌 2. Deployment on AWS EC2 with Docker
+
+Deploy the application on an EC2 instance using Docker for better control, scalability, and potential HTTPS configuration.
+
+#### Steps:
+
+1. **Provision EC2 Instance**
+    - Launch an EC2 instance (Ubuntu 20.04 recommended).
+    - Choose appropriate instance type (e.g., t2.micro for testing, t3.medium for production).
+    - Configure the security group to allow inbound traffic on port 8501 (Streamlit).
+
+2. **Upload Project Files**
+    - From your local machine, use `scp` to upload your zipped project folder:
+      ```bash
+      scp -i "path/to/your-key.pem" patient_model.zip ubuntu@<EC2-Public-IP>:/home/ubuntu/
+      ```
+    - SSH into the instance:
+      ```bash
+      ssh -i "path/to/your-key.pem" ubuntu@<EC2-Public-IP>
+      ```
+    - Unzip the project:
+      ```bash
+      unzip patient_model.zip
+      cd "Patient risk stratification model"
+      ```
+
+3. **Build Docker Image**
+    - Ensure Docker is installed on the EC2 instance.
+    - Build the Docker image:
+      ```bash
+      sudo docker build -t patient-risk-app .
+      ```
+
+4. **Run Docker Container**
+    - Run the container:
+      ```bash
+      sudo docker run -d -p 8501:8501 patient-risk-app
+      ```
+    - Access the app at:
+      ```
+      http://<EC2-Public-IP>:8501
+      ```
+
+5. **Snapshot**
+    - ![EC2 Docker Deployment Screenshot](ec2_docker_deployment.png)
+
+#### Notes:
+- Docker ensures consistent environments, easy versioning, and containerized deployment.
+- For production, consider:
+  - HTTPS termination using a reverse proxy (e.g., Nginx).
+  - Configuring a custom domain with SSL.
+  - Auto-scaling via ECS/EKS for high availability.
+
+---
+
+## Project Structure
+
