@@ -132,3 +132,46 @@ Deploy the application on an EC2 instance using Docker for better control, scala
 
 ## Project Structure
 
+patient_risk_stratification/
+├── data/ # Raw and processed data
+├── models/ # Saved model files
+├── src/ # Source code
+│ ├── init.py
+│ ├── data_preprocessing.py # Data cleaning and feature engineering
+│ ├── model_training.py # Model development and evaluation
+│ └── utils.py # Helper functions
+├── app.py # Streamlit application
+├── requirements.txt # Dependencies
+└── README.md # Project documentation
+
+## Model Details
+
+- **Algorithms**: XGBoost, Random Forest, Logistic Regression
+- **Features**: Demographic information, vital signs, diagnoses, procedures, medications, lab results
+- **Target Variables**: Hospital readmission risk, ICU transfer risk
+- **Performance**: Evaluated using accuracy, precision, recall, F1-score, and ROC AUC
+
+## Development
+
+This project was developed as a portfolio project for a data science role in healthcare. The key steps in the development process were:
+
+1. **Data Collection**: Utilizing open-source healthcare datasets for model training
+2. **Exploratory Data Analysis**: Understanding the characteristics and patterns in patient data
+3. **Feature Engineering**: Creating relevant features for risk prediction
+4. **Model Development**: Training and evaluating different machine learning algorithms
+5. **Application Development**: Building an interactive web application using Streamlit
+6. **Model Interpretation**: Implementing SHAP for model explainability
+
+## Future Improvements
+
+- Implement a time-series analysis component for longitudinal patient data
+- Add support for more risk prediction targets (e.g., mortality, length of stay)
+- Integrate with external EHR systems for real-time data access
+- Develop a clinical validation framework for model verification
+- Add collaborative filtering for treatment recommendations
+
+## Contact
+
+- GitHub: https://github.com/SubhashG05
+- LinkedIn: https://www.linkedin.com/in/g-subhash/
+- Email: subhashg5397@gmail.com
